@@ -1,0 +1,12 @@
+CREATE TABLE `teste`.`projects` (`id` INT NOT NULL AUTO_INCREMENT ,
+ `name` VARCHAR(50) NOT NULL , `description` VARCHAR(255) NULL ,
+ `createAt` DATETIME NOT NULL , `updateAt` DATETIME NOT NULL , PRIMARY KEY (`id`));
+
+CREATE TABLE `teste`.`task` (`id` INT NOT NULL AUTO_INCREMENT ,
+ `idProject` INT NOT NULL , `name` VARCHAR(50) NOT NULL ,
+ `description` VARCHAR(255) NULL , `completed` BOOLEAN NOT NULL ,
+ `notes` VARCHAR(255) NULL , `deadline` DATE NOT NULL , `createAt` DATETIME NOT NULL ,
+ `updateAt` DATETIME NOT NULL , PRIMARY KEY (`id`));
+
+ALTER TABLE `task` ADD CONSTRAINT `fk_projects` FOREIGN KEY (`idProject`) 
+REFERENCES `projects`(`id`) ON DELETE CASCADE ON UPDATE RESTRICT;
